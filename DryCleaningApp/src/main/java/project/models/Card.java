@@ -2,12 +2,27 @@ package project.models;
 
 import java.time.LocalDate;
 
+import javax.persistence.*;
+@Entity
+@Table(name="card")
 public class Card {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
 	private long id;
+	
+	@Column(name="card_name")
 	private String cardName;
+	
+	@Column(name="card_number")
 	private String cardNumber;
+	
+	@Column(name="expiry_date")
 	private LocalDate expiryDate;
+	
+	@Column(name="bank_name")
 	private String bankName;
+	
 	public long getId() {
 		return id;
 	}

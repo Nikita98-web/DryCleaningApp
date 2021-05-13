@@ -1,8 +1,18 @@
 package project.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="user")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="user_id")
 	private String userId;
+	
+	@Column(name="password" , nullable = false)
 	private String password;
+	
 	public String getUserId() {
 		return userId;
 	}

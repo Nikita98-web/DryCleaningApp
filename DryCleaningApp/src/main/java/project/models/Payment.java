@@ -1,9 +1,24 @@
 package project.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="payment")
 public class Payment {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="payment_id")
 	private long paymentId;
+	
+	@Column(name="type")
 	private String type;
+	
+	@Column(name="status")
 	private String status;
+	
+	@Column(name="card")
+	private Card card;
+	
 	public long getPaymentId() {
 		return paymentId;
 	}
@@ -28,5 +43,5 @@ public class Payment {
 	public void setCard(Card card) {
 		this.card = card;
 	}
-	private Card card;
+	
 }

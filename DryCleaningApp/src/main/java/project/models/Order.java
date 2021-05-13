@@ -2,13 +2,30 @@ package project.models;
 
 import java.time.LocalDate;
 
+import javax.persistence.*;
+@Entity
+@Table(name="order")
 public class Order {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="order_id")
 	private long orderId;
+	
+	@Column(name="amount")
 	private double amount;
+	
+	@Column(name="billing_date")
 	private LocalDate billingDate;
+	
+	@Column(name="customer")
 	private Customer customer;
+	
+	@Column(name="payment_method")
 	private String paymentMethod;
+	
+	@Column(name="booking_details")
 	private Booking bookingDetails;
+	
 	public long getOrderId() {
 		return orderId;
 	}
