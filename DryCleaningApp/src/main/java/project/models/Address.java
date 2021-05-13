@@ -1,12 +1,29 @@
 package project.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="address")
 public class Address {
+	
+	@Column(name="door_no", nullable = false)
 	private String doorNo;
+	
+	@Column(name="street", nullable = false)
 	private String street;
+	
+	@Column(name="area", nullable = false)
 	private String area;
+	
+	@Column(name="city", nullable = false)
 	private String city;
+	
+	@Column(name="state", nullable = false)
 	private String state;
+	
+	@Column(name="pincode", nullable = false)
 	private int pincode;
+	
 	public String getDoorNo() {
 		return doorNo;
 	}

@@ -2,12 +2,27 @@ package project.models;
 
 import java.time.*;
 
+import javax.persistence.*;
+@Entity
+@Table(name="booking")
 public class Booking {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="booking_id")
 	private long bookingId;
+	
+	@Column(name="booking_date")
 	private LocalDate bookingDate;
+	
+	@Column(name="booking_time")
 	private LocalTime bookingTime;
+	
+	@Column(name="service_type")
 	private String serviceType;
+	
+	@Column(name="customer_details")
 	private Customer customerDetails;
+	
 	public long getBookingId() {
 		return bookingId;
 	}

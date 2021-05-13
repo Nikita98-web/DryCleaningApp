@@ -1,13 +1,33 @@
 package project.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="customer_item")
 public class CustomerItem {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="item_id")
 	private long itemId;
+	
+	@Column(name="name")
 	private String name;
+	
+	@Column(name="color")
 	private String color;
+	
+	@Column(name="category")
 	private String category;
+	
+	@Column(name="quantity")
 	private int quantity;
+	
+	@Column(name="material")
 	private String material;
+	
+	@Column(name="description")
 	private String description;
+	
 	public long getItemId() {
 		return itemId;
 	}
