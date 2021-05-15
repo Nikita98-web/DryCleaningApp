@@ -16,7 +16,8 @@ public class Payment {
 	@Column(name="status")
 	private String status;
 	
-	@Column(name="card")
+	@OneToOne (optional=true)
+	@JoinColumn(name="id")
 	private Card card;
 	
 	public long getPaymentId() {

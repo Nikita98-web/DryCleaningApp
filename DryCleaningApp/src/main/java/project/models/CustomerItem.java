@@ -28,6 +28,10 @@ public class CustomerItem {
 	@Column(name="description")
 	private String description;
 	
+	@ManyToOne
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	
 	public long getItemId() {
 		return itemId;
 	}
@@ -70,4 +74,11 @@ public class CustomerItem {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
 }

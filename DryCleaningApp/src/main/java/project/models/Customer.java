@@ -24,7 +24,8 @@ public class Customer {
 	@Column(name="dob")
   private LocalDate dob;
 	
-	@Column(name="address")
+	
+	@JoinColumn(name="address")
   private Address address;
 
 public String getUserId() {
