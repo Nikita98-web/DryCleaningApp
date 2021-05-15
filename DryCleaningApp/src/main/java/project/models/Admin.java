@@ -17,4 +17,5 @@ public String getUserId() {
 public void setUserId(String userId) {
 	this.userId = userId;
 }
+
 }

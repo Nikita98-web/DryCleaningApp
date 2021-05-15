@@ -17,7 +17,8 @@ public class Order {
 	@Column(name="billing_date")
 	private LocalDate billingDate;
 	
-	@Column(name="customer")
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private Customer customer;
 	
 	@Column(name="payment_method")

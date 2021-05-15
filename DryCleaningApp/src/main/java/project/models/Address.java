@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="address")
 public class Address {
-	
+	@Id
 	@Column(name="door_no", nullable = false)
 	private String doorNo;
 	
