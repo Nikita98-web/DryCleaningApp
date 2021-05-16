@@ -35,7 +35,7 @@ public class CustomerItemController {
 		return customerItemService.getItem(id);
 	}
 	
-	@GetMapping("/getbycustomer/{id}")
+	@GetMapping("/getbycustomer/{customerId}")
 	public List<CustomerItem> getItemsByCustomer(@PathVariable long customerId){
 		return customerItemService.getItemsByCustomer(customerId);
 	}
