@@ -3,7 +3,7 @@ package project.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="customer_item")
+@Table(name="customer_items")
 public class CustomerItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +28,7 @@ public class CustomerItem {
 	@Column(name="description")
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 	

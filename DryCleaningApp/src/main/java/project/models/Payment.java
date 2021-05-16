@@ -3,7 +3,7 @@ package project.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="payment")
+@Table(name="payments")
 public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,7 @@ public class Payment {
 	@Column(name="status")
 	private String status;
 	
-	@OneToOne (optional=true)
+	@OneToOne (cascade = CascadeType.ALL, optional=true)
 	@JoinColumn(name="id")
 	private Card card;
 	

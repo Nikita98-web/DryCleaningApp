@@ -1,16 +1,17 @@
 package project.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import project.jpa.IUserJpa;
 import project.models.User;
-
+@Repository
 public class UserRepository implements IUserRepository{
 	@Autowired
 	private IUserJpa userjpa;
 	
 	public User signIn(User user) {
-		User u = userjpa.findByUserIdAndPassword(user);
+		User u = userjpa.findByUserIdAndPassword(user.getUserId(), user.getPassword());
 		return u;
 		
 	}

@@ -4,7 +4,7 @@ import java.time.*;
 
 import javax.persistence.*;
 @Entity
-@Table(name="booking")
+@Table(name="bookings")
 public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +20,8 @@ public class Booking {
 	@Column(name="service_type")
 	private String serviceType;
 	
-	@Column(name="customer_details")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
 	private Customer customerDetails;
 	
 	public long getBookingId() {

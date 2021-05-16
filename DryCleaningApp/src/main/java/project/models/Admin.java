@@ -3,7 +3,7 @@ package project.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="admin")
+@Table(name="admins")
 public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

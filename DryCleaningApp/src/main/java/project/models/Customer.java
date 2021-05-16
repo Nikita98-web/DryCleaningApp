@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import javax.persistence.*;
 
 @Entity
-@Table(name="customer")
+@Table(name="customers")
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="user_id")
   private String userId;
 	
@@ -24,8 +24,8 @@ public class Customer {
 	@Column(name="dob")
   private LocalDate dob;
 	
-	
-	@JoinColumn(name="address")
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name="door_no")
   private Address address;
 
 public String getUserId() {
