@@ -3,12 +3,12 @@ package project.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import project.jpa.IBookingJpa;
 import project.jpa.ICustomerItemJpa;
 import project.models.CustomerItem;
-
-public class CustomerItemRepository{
+@Repository
+public class CustomerItemRepository implements ICustomerItemRepository{
 	
 	@Autowired
 	private ICustomerItemJpa customeritemjpa;

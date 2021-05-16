@@ -5,9 +5,10 @@ import project.models.Customer;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import project.jpa.*;
-
+@Repository
 public class CustomerRepository  implements ICustomerRepository{
 	@Autowired
 	private ICustomerJpa customerjpa;

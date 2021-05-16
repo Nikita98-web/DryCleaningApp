@@ -4,10 +4,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import project.jpa.*;
 import project.models.*;
-
+@Repository
 public class BookingRepository implements IBookingRepository {
 	
 	@Autowired

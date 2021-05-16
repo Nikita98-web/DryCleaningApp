@@ -3,10 +3,11 @@ package project.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import project.jpa.IOrderJpa;
 import project.models.Order;
-
+@Repository
 public class OrderRepository implements IOrderRepository{
 	@Autowired
 	private IOrderJpa orderjpa;

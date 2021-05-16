@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,14 +17,14 @@ public class Order {
 	@Column(name="billing_date")
 	private LocalDate billingDate;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private Customer customer;
 	
 	@Column(name="payment_method")
 	private String paymentMethod;
-	
-	@Column(name="booking_details")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="booking_id")
 	private Booking bookingDetails;
 	
 	public long getOrderId() {

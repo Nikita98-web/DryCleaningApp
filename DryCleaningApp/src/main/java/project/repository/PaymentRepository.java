@@ -3,10 +3,11 @@ package project.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import project.jpa.IPaymentJpa;
 import project.models.Payment;
-
+@Repository
 public class PaymentRepository implements IPaymentRepository {
 	@Autowired
 	private IPaymentJpa paymentjpa;
