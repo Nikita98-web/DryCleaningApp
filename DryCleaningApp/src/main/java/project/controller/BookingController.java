@@ -1,5 +1,6 @@
 package project.controller;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,17 +21,17 @@ public class BookingController {
 		return bookingService.addBooking(booking);
 	}
 	
-	@DeleteMapping("/remove/{id}")
+	@DeleteMapping("/remove/{bookingId}")
 	public Booking removeBooking(@PathVariable long bookingId) {
 		return bookingService.removeBooking(bookingId);
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/update/{bookingId}")
 	public Booking updateBooking(@PathVariable long bookingId, @RequestBody Booking booking) {
 		return bookingService.updateBooking(bookingId, booking);
 	}
 	
-	@GetMapping("/get/{id}")
+	@GetMapping("/get/{bookingId}")
 	public Booking getBooking(@PathVariable long bookingId) {
 		return bookingService.getBooking(bookingId);
 	}
@@ -41,11 +42,12 @@ public class BookingController {
 	}
 	
 	@GetMapping("/getbydate/{date}")
-	public List<Booking> getBookingsByDate(@PathVariable LocalDate date){
-		return bookingService.getBookingsByDate(date);
+	public List<Booking> getBookingsByDate(@PathVariable String date){
+		LocalDate myDate=LocalDate.parse(date);
+		return bookingService.getBookingsByDate(myDate);
 	}
 	
-	@GetMapping("/getbycustomer/{id}")
+	@GetMapping("/getbycustomer/{customerId}")
 	public List<Booking>getBookingsByCustomer(@PathVariable long customerId){
 		return bookingService.getBookingsByCustomer(customerId);
 	}

@@ -3,10 +3,11 @@ package project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import project.models.Order;
 import project.repository.IOrderRepository;
-
+@Service
 public class OrderService implements IOrderService{
 	@Autowired
 	private IOrderRepository orderRepository;

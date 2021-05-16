@@ -5,13 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import project.jpa.ICustomerItemJpa;
-import project.models.CustomerItem;
+import project.jpa.*;
+import project.models.*;
 @Repository
 public class CustomerItemRepository implements ICustomerItemRepository{
 	
 	@Autowired
 	private ICustomerItemJpa customeritemjpa;
+	
+	@Autowired
+	private ICustomerJpa customerjpa;
 	
 	public CustomerItem addItem(CustomerItem item) {
 		customeritemjpa.save(item);
@@ -44,7 +47,8 @@ public class CustomerItemRepository implements ICustomerItemRepository{
 	}
 	
 	public List<CustomerItem> getItemsByCustomer(long customerId){
-		List<CustomerItem> c = customeritemjpa.findByCustomer(customerId);
-		return c;
+		Customer customer=customerjpa.findById(Long.toString(customerId)).get();
+		List<CustomerItem> cItem = customeritemjpa.findByCustomer(customer);
+		return cItem;
 	}
 }
