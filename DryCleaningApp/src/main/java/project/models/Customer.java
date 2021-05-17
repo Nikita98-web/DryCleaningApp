@@ -6,11 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="customers")
-public class Customer {
-	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="user_id")
-  private String userId;
+@PrimaryKeyJoinColumn(referencedColumnName="user_id")
+public class Customer extends User{
 	
 	@Column(name="name")
   private String name;
@@ -28,13 +25,6 @@ public class Customer {
 @JoinColumn(name="door_no")
   private Address address;
 
-public String getUserId() {
-	return userId;
-}
-
-public void setUserId(String userId) {
-	this.userId = userId;
-}
 
 public String getName() {
 	return name;

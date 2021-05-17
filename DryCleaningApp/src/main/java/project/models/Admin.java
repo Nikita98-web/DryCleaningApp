@@ -4,18 +4,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="admins")
-public class Admin {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="user_id")
-	private String userId;
-
-public String getUserId() {
-	return userId;
+@PrimaryKeyJoinColumn(referencedColumnName="user_id")
+public class Admin extends User {
+	
 }
 
-public void setUserId(String userId) {
-	this.userId = userId;
-}
 
-}
