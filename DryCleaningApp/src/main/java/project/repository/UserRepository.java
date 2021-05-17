@@ -10,6 +10,7 @@ public class UserRepository implements IUserRepository{
 	@Autowired
 	private IUserJpa userjpa;
 	
+
 	public User signIn(User user) {
 		User u = userjpa.findByUserIdAndPassword(user.getUserId(), user.getPassword());
 		return u;

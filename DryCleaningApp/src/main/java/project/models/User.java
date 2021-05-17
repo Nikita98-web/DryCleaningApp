@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="users")
+@Inheritance(strategy= InheritanceType.JOINED)
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="user_id")
 	private String userId;
 	
-	@Column(name="password" , nullable = false)
+	@Column(name="password")
 	private String password;
 	
 	public String getUserId() {
