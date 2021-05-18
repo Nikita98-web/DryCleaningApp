@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.exception.NotFoundException;
 import project.models.Customer;
 import project.repository.ICustomerRepository;
 @Service
@@ -16,15 +17,15 @@ public class CustomService implements ICustomerService {
 		return customerRepository.addCustomer(customer);
 	}
 	
-	public Customer removeCustomer(long custId) {
+	public Customer removeCustomer(long custId)throws NotFoundException{
 		return customerRepository.removeCustomer(custId);
 	}
 	
-	public Customer updateCustomer(long custId, Customer customer) {
+	public Customer updateCustomer(long custId, Customer customer) throws NotFoundException {
 		return customerRepository.updateCustomer(custId, customer);
 	}
 	
-	public Customer getCustomer(long custId) {
+	public Customer getCustomer(long custId)throws Exception {
 		return customerRepository.getCustomer(custId);
 	}
 	

@@ -1,14 +1,13 @@
 package project.repository;
 
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-
+import project.exception.NotFoundException;
 import project.models.Customer;
 
 public interface ICustomerRepository{
 	Customer addCustomer(Customer customer);
-	Customer removeCustomer(long custId);
-	Customer updateCustomer(long custId, Customer customer);
-	Customer getCustomer(long custId);
+	Customer removeCustomer(long custId)throws NotFoundException;
+	Customer updateCustomer(long custId, Customer customer)throws NotFoundException;
+	Customer getCustomer(long custId)throws Exception;
 	List<Customer> getAllCustomers();
 }

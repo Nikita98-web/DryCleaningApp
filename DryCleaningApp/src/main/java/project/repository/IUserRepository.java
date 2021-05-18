@@ -1,10 +1,10 @@
 package project.repository;
 
+import project.exception.NotFoundException;
 import project.models.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IUserRepository {
-	User signIn(User user);
+	User signIn(User user)throws NotFoundException;
 	User signOut(User user);
-	User changePassword(long id, User user);
+	User changePassword(long id, User user)throws NotFoundException;
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.exception.NotFoundException;
 import project.models.Booking;
 import project.repository.IBookingRepository;
 
@@ -18,15 +19,15 @@ public class BookingService implements IBookingService {
 		return bookingRepository.addBooking(booking);
 	}
 	
-	public Booking removeBooking(long bookingId) {
+	public Booking removeBooking(long bookingId) throws Exception{
 		return bookingRepository.removeBooking(bookingId);
 	}
 	
-	public Booking updateBooking(long bookingId, Booking booking) {
+	public Booking updateBooking(long bookingId, Booking booking)throws NotFoundException {
 		return bookingRepository.updateBooking(bookingId, booking);
 	}
 	
-	public Booking getBooking(long bookingId) {
+	public Booking getBooking(long bookingId) throws Exception {
 		return bookingRepository.getBooking(bookingId);
 	}
 	
@@ -38,7 +39,7 @@ public class BookingService implements IBookingService {
 		return bookingRepository.getBookingsByDate(date);
 	}
 	
-	public List<Booking>getBookingsByCustomer(long customerId){
+	public List<Booking>getBookingsByCustomer(long customerId)throws Exception{
 		return bookingRepository.getBookingsByCustomer(customerId);
 	}
 }
