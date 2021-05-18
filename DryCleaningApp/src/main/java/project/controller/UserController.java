@@ -3,9 +3,12 @@ package project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
 
+import project.exception.*;
 import project.models.User;
 import project.services.IUserService;
+
 
 @RestController
 @RequestMapping("/user")
@@ -15,8 +18,11 @@ public class UserController {
 	
 	
 	@GetMapping("/getsignin")
-	public User signIn(@RequestBody User user) {
-		return userService.signIn(user);
+	public ResponseEntity<Object> signIn(@RequestBody User user) throws NotFoundException {
+		ResponseEntity <Object>response=null;
+		User u=userService.signIn(user);
+		response=new ResponseEntity<>(u, HttpStatus.ACCEPTED);
+		return response;
 	}
 	
 	@GetMapping("/getsignout")
@@ -25,8 +31,11 @@ public class UserController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public User changePassword(@PathVariable long id,@RequestBody User user) {
-		return userService.changePassword(id, user);
+	public ResponseEntity<Object> changePassword(@PathVariable long id,@RequestBody User user) throws NotFoundException{
+		ResponseEntity <Object>response=null;
+			User u= userService.changePassword(id, user);
+			response=new ResponseEntity<>(u, HttpStatus.ACCEPTED);
+		return response;
 	}
 	
 }

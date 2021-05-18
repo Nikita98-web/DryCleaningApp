@@ -29,7 +29,7 @@ public class CustomerItem {
 	private String description;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="customer_id")
+	@JoinColumn(name="user_id")
 	private Customer customer;
 	
 	public long getItemId() {

@@ -2,6 +2,7 @@ package project.repository;
 
 import java.util.List;
 
+import project.exception.NotFoundException;
 import project.models.CustomerItem;
 
 public interface ICustomerItemRepository {
