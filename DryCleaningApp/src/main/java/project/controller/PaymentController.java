@@ -3,6 +3,8 @@ package project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,25 +19,34 @@ public class PaymentController {
 	
 	@PostMapping("/add")
 	public Payment addPayment(@RequestBody Payment payment) {
-		return paymentService.addPayment(payment);	
+		return paymentService.addPayment(payment);
 	}
 	
 	@DeleteMapping("/remove/{id}")
-	public Payment removePayment(@PathVariable long id) {
-		return paymentService.removePayment(id);
+	public ResponseEntity<Object> removePayment(@PathVariable long id) throws Exception {
+		ResponseEntity<Object> response=null;
+		Payment p= paymentService.removePayment(id);
+		response = new ResponseEntity<Object>(p,HttpStatus.OK);
+		return response;
 	}
 	
 	@PutMapping("/update/{id}")
-	public Payment updatePayment(@PathVariable long id,@RequestBody Payment payment) {
-		return paymentService.updatePayment(id, payment);
+	public ResponseEntity<Object> updatePayment(@PathVariable long id,@RequestBody Payment payment) throws Exception {
+		ResponseEntity<Object> response=null;
+		Payment p= paymentService.updatePayment(id, payment);
+		response = new ResponseEntity<Object>(p,HttpStatus.OK);
+		return response;
 	}
 	
 	@GetMapping("/get/{id}")
-	public Payment getPaymentDetails(@PathVariable long id) {
-		return paymentService.getPaymentDetails(id);
+	public ResponseEntity<Object> getPaymentDetails(@PathVariable long id)throws Exception {
+		ResponseEntity<Object> response=null;
+		Payment p= paymentService.getPaymentDetails(id);
+		response = new ResponseEntity<Object>(p,HttpStatus.OK);
+		return response;
 	}
 	
-	@GetMapping("/getbypayment")
+	@GetMapping("/get")
 	public List<Payment> getAllPaymentDetails(){
 		return paymentService.getAllPaymentDetails();
 	}

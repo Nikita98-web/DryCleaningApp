@@ -3,6 +3,8 @@ package project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,21 +23,30 @@ public class OrderController {
 	}
 	
 	@DeleteMapping("/remove/{id}")
-	public Order removeOrder(@PathVariable long id) {
-		return orderService.removeOrder(id);
+	public ResponseEntity<Object> removeOrder(@PathVariable long id)throws Exception {
+		ResponseEntity<Object> response=null;
+		Order o= orderService.removeOrder(id);
+		response = new ResponseEntity<Object>(o,HttpStatus.OK);
+		return response;
 	}
 	
 	@PutMapping("/update/{id}")
-	public Order updateOrder(@PathVariable long id,@RequestBody Order order) {
-		return orderService.updateOrder(id, order);
+	public ResponseEntity<Object> updateOrder(@PathVariable long id,@RequestBody Order order)throws Exception {
+		ResponseEntity<Object> response=null;
+		Order o= orderService.updateOrder(id, order);
+		response = new ResponseEntity<Object>(o,HttpStatus.OK);
+		return response;
 	}
 	
 	@GetMapping("/get/{id}")
-	public Order getOrderDetails(@PathVariable long id) {
-		return orderService.getOrderDetails(id);
+	public ResponseEntity<Object> getOrderDetails(@PathVariable long id) throws Exception{
+		ResponseEntity<Object> response=null;
+		Order o =  orderService.getOrderDetails(id);
+		response = new ResponseEntity<Object>(o,HttpStatus.OK);
+		return response;
 	}
 	
-	@GetMapping("/getbyorder")
+	@GetMapping("/get")
 	public List<Order> getAllOrders(){
 		return orderService.getAllOrders();
 	}

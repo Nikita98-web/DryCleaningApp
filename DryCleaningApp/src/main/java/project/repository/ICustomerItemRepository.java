@@ -7,8 +7,8 @@ import project.models.CustomerItem;
 
 public interface ICustomerItemRepository {
 	CustomerItem addItem(CustomerItem item);
-	CustomerItem removeItem(long id);
-	CustomerItem updateItem(long id, CustomerItem item);
-	CustomerItem getItem(long id);
-	List<CustomerItem> getItemsByCustomer(long customerId);
+	CustomerItem removeItem(long id)throws Exception;
+	CustomerItem updateItem(long id, CustomerItem item)throws Exception;
+	CustomerItem getItem(long id)throws Exception;
+	List<CustomerItem> getItemsByCustomer(long customerId)throws Exception;
 }

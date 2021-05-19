@@ -1,10 +1,12 @@
 package project.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import project.exception.NotFoundException;
 import project.jpa.*;
 import project.models.*;
 @Repository
@@ -21,34 +23,56 @@ public class CustomerItemRepository implements ICustomerItemRepository{
 		return(item);
 	}
 	
-	public CustomerItem removeItem(long id) {
-		CustomerItem c = customeritemjpa.findById(id).get();
-		customeritemjpa.delete(c);
-		return c;
+	public CustomerItem removeItem(long id) throws Exception{
+		Optional<CustomerItem> oc = customeritemjpa.findById(id);
+		if(oc.isPresent()) {
+			CustomerItem c=oc.get();
+			customeritemjpa.delete(c);
+			return c;
+		}
+		else
+			throw new NotFoundException("Customer item is not valid");
 	}
 	
-	public CustomerItem updateItem(long id, CustomerItem item) {
-		CustomerItem c = customeritemjpa.findById(id).get();
-		c.setItemId(item.getItemId());
-		c.setCategory(item.getCategory());
-		c.setColor(item.getColor());
-		c.setCustomer(item.getCustomer());
-		c.setDescription(item.getCategory());
-		c.setMaterial(item.getMaterial());
-		c.setName(item.getName());
-		c.setQuantity(item.getQuantity());
-		customeritemjpa.save(c);
-		return c;
+	public CustomerItem updateItem(long id, CustomerItem item) throws Exception {	
+		Optional<CustomerItem> oc = customeritemjpa.findById(id);
+		if(oc.isPresent()) {
+			CustomerItem c= oc.get();
+			c.setItemId(item.getItemId());
+			c.setCategory(item.getCategory());
+			c.setColor(item.getColor());
+			c.setCustomer(item.getCustomer());
+			c.setDescription(item.getCategory());
+			c.setMaterial(item.getMaterial());
+			c.setName(item.getName());
+			c.setQuantity(item.getQuantity());
+			customeritemjpa.save(c);
+			return c;
+		}
+		else
+			throw new NotFoundException("CustomerItem is not valid");
+		
 	}
 	
-	public CustomerItem getItem(long id) {
-		CustomerItem c = customeritemjpa.findById(id).get();
-		return c;
+	public CustomerItem getItem(long id)throws Exception {
+		Optional<CustomerItem> oc = customeritemjpa.findById(id);
+		if(oc.isPresent()) {
+			CustomerItem c = oc.get();
+			return c;
+		}
+		else
+			throw new NotFoundException("CustomerItem is not valid");
+			
 	}
 	
-	public List<CustomerItem> getItemsByCustomer(long customerId){
-		Customer customer=customerjpa.findById(Long.toString(customerId)).get();
-		List<CustomerItem> cItem = customeritemjpa.findByCustomer(customer);
-		return cItem;
-	}
+	public List<CustomerItem> getItemsByCustomer(long customerId) throws Exception{
+		Optional<Customer> oc=customerjpa.findById(Long.toString(customerId));
+		if(oc.isPresent()) {
+			Customer c = oc.get();
+			List<CustomerItem> cItem = customeritemjpa.findByCustomer(c);
+			return cItem;
+		}
+		else 
+			throw new NotFoundException("Customerid is not valid");
+		}
 }
