@@ -16,19 +16,19 @@ public class CustomerItemService implements ICustomerItemService {
 		return customerItemRepository.addItem(item);
 	}
 	
-	public CustomerItem removeItem(long id) {
+	public CustomerItem removeItem(long id) throws Exception{
 		return customerItemRepository.removeItem(id);
 	}
 	
-	public CustomerItem updateItem(long id, CustomerItem item) {
+	public CustomerItem updateItem(long id, CustomerItem item)throws Exception {
 		return customerItemRepository.updateItem(id, item);
 	}
 	
-	public CustomerItem getItem(long id) {
+	public CustomerItem getItem(long id) throws Exception{
 		return customerItemRepository.getItem(id);
 	}
 	
-	public List<CustomerItem> getItemsByCustomer(long customerId){
+	public List<CustomerItem> getItemsByCustomer(long customerId)throws Exception{
 		return customerItemRepository.getItemsByCustomer(customerId);
 	}
 }

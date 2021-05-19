@@ -16,15 +16,15 @@ public class OrderService implements IOrderService{
 		return orderRepository.addOrder(order);
 	}
 	
-	public Order removeOrder(long id) {
+	public Order removeOrder(long id) throws Exception{
 		return orderRepository.removeOrder(id);
 	}
 	
-	public Order updateOrder(long id, Order order) {
+	public Order updateOrder(long id, Order order)throws Exception {
 		return orderRepository.updateOrder(id, order);
 	}
 	
-	public Order getOrderDetails(long id) {
+	public Order getOrderDetails(long id)throws Exception {
 		return orderRepository.getOrderDetails(id);
 	}
 	

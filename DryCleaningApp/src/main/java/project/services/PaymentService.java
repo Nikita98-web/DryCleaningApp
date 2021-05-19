@@ -16,15 +16,15 @@ public class PaymentService implements IPaymentService{
 		return paymentRepository.addPayment(payment);	
 	}
 	
-	public Payment removePayment(long id) {
+	public Payment removePayment(long id) throws Exception{
 		return paymentRepository.removePayment(id);
 	}
 	
-	public Payment updatePayment(long id, Payment payment) {
+	public Payment updatePayment(long id, Payment payment)throws Exception {
 		return paymentRepository.updatePayment(id, payment);
 	}
 	
-	public Payment getPaymentDetails(long id) {
+	public Payment getPaymentDetails(long id) throws Exception{
 		return paymentRepository.getPaymentDetails(id);
 	}
 	

@@ -1,10 +1,12 @@
 package project.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import project.exception.NotFoundException;
 import project.jpa.IOrderJpa;
 import project.models.Order;
 @Repository
@@ -17,27 +19,44 @@ public class OrderRepository implements IOrderRepository{
 		return order;
 	}
 	
-	public Order removeOrder(long id) {
-		Order o=orderjpa.findById(id).get();
-		orderjpa.delete(o);
-		return o;
+	public Order removeOrder(long id) throws Exception{
+		Optional<Order> oo=orderjpa.findById(id);
+		if(oo.isPresent()) {
+			Order o = oo.get();
+			orderjpa.delete(o);
+			return o;
+		}
+		else
+			throw new NotFoundException("Order id is not valid");
+		
 	}
 	
-	public Order updateOrder(long id, Order order) {
-		Order o=orderjpa.findById(id).get();
-		o.setOrderId(order.getOrderId());
-		o.setAmount(order.getAmount());
-		o.setBillingDate(order.getBillingDate());
-		o.setBookingDetails(order.getBookingDetails());
-		o.setCustomer(order.getCustomer());
-		o.setPaymentMethod(order.getPaymentMethod());
-		orderjpa.save(o);
-		return o;
+	public Order updateOrder(long id, Order order)throws Exception {
+		Optional<Order> oo=orderjpa.findById(id);
+		if(oo.isPresent()) {
+			Order o=oo.get();
+			o.setOrderId(order.getOrderId());
+			o.setAmount(order.getAmount());
+			o.setBillingDate(order.getBillingDate());
+			o.setBookingDetails(order.getBookingDetails());
+			o.setCustomer(order.getCustomer());
+			o.setPaymentMethod(order.getPaymentMethod());
+			orderjpa.save(o);
+			return o;
+		}
+		else
+			throw new NotFoundException("Order id is not valid");
+		
 	}
 	
-	public Order getOrderDetails(long id) {
-	    Order o=orderjpa.findById(id).get();
-		return o;
+	public Order getOrderDetails(long id)throws Exception {
+	    Optional<Order> oo=orderjpa.findById(id);
+	    if(oo.isPresent()) {
+	    	Order o=oo.get();
+	    	return o;
+	    }
+	    else
+	    	throw new NotFoundException("Order id is not valid");
 	}
 	
 	public List<Order> getAllOrders(){
