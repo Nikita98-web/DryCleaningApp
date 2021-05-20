@@ -24,6 +24,21 @@ public class Booking {
 	@JoinColumn(name="user_id")
 	private Customer customerDetails;
 	
+	public Booking() {
+		
+	}
+	
+	public Booking(long bookingId, LocalDate bookingDate, LocalTime bookingTime, String serviceType,
+			Customer customerDetails) {
+		super();
+		this.bookingId = bookingId;
+		this.bookingDate = bookingDate;
+		this.bookingTime = bookingTime;
+		this.serviceType = serviceType;
+		this.customerDetails = customerDetails;
+	}
+	
+	
 	public long getBookingId() {
 		return bookingId;
 	}

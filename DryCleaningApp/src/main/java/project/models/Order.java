@@ -27,6 +27,20 @@ public class Order {
 	@JoinColumn(name="booking_id")
 	private Booking bookingDetails;
 	
+	public Order() {
+		
+	}
+	
+	public Order(long orderId, double amount, LocalDate billingDate, Customer customer, String paymentMethod,
+			Booking bookingDetails) {
+		super();
+		this.orderId = orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+		this.customer = customer;
+		this.paymentMethod = paymentMethod;
+		this.bookingDetails = bookingDetails;
+	}
 	public long getOrderId() {
 		return orderId;
 	}

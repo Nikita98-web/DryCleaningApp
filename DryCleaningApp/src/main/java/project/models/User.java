@@ -13,6 +13,14 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	public User() {
+		
+	}
+	public User(String userId, String password) {
+		super();
+		this.userId = userId;
+		this.password = password;
+	}
 	public String getUserId() {
 		return userId;
 	}

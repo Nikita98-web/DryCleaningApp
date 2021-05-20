@@ -23,6 +23,18 @@ public class Card {
 	@Column(name="bank_name")
 	private String bankName;
 	
+	public Card() {
+		
+	}
+	
+	public Card(long id, String cardName, String cardNumber, LocalDate expiryDate, String bankName) {
+		super();
+		this.id = id;
+		this.cardName = cardName;
+		this.cardNumber = cardNumber;
+		this.expiryDate = expiryDate;
+		this.bankName = bankName;
+	}
 	public long getId() {
 		return id;
 	}

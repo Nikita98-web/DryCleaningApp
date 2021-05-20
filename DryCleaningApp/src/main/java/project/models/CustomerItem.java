@@ -32,6 +32,24 @@ public class CustomerItem {
 	@JoinColumn(name="user_id")
 	private Customer customer;
 	
+	public CustomerItem() {
+		
+	}
+	
+	public CustomerItem(long itemId, String name, String color, String category, int quantity, String material,
+			String description, Customer customer) {
+		super();
+		this.itemId = itemId;
+		this.name = name;
+		this.color = color;
+		this.category = category;
+		this.quantity = quantity;
+		this.material = material;
+		this.description = description;
+		this.customer = customer;
+	}
+	
+	
 	public long getItemId() {
 		return itemId;
 	}
