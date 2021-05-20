@@ -20,7 +20,18 @@ public class Customer extends User{
 	
 	@Column(name="dob")
   private LocalDate dob;
+public Customer() {
 	
+}	
+public Customer(String userId,String password,String name, String email, String contactNo, LocalDate dob, Address address) {
+		super(userId,password);
+		this.name = name;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.dob = dob;
+		this.address = address;
+	}
+
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name="door_no")
   private Address address;

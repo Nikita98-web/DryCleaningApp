@@ -24,9 +24,21 @@ public class Address {
 	@Column(name="pincode", nullable = false)
 	private int pincode;
 	
+	public Address() {};
+	public Address(String doorNo, String street, String area, String city, String state, int pincode) {
+		super();
+		this.doorNo = doorNo;
+		this.street = street;
+		this.area = area;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+	}
+	
 	public String getDoorNo() {
 		return doorNo;
 	}
+
 	public void setDoorNo(String doorNo) {
 		this.doorNo = doorNo;
 	}

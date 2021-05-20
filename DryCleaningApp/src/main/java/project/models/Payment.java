@@ -20,6 +20,17 @@ public class Payment {
 	@JoinColumn(name="id")
 	private Card card;
 	
+	public Payment() {
+		
+	}
+	
+	public Payment(long paymentId, String type, String status, Card card) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.card = card;
+	}
 	public long getPaymentId() {
 		return paymentId;
 	}
