@@ -42,7 +42,7 @@ public class CustomerController {
 	}
 	
 	//Update Customer by CustomerId
-	@PostMapping("/update/{custId}")
+	@PutMapping("/update/{custId}")
 	public ResponseEntity <Object> updateCustomer(@PathVariable long custId,@RequestBody Customer customer)throws NotFoundException {
 		LOGGER.info("/customer/update/{custId} URL is opened");
 		LOGGER.info("Update Customer method executed");
