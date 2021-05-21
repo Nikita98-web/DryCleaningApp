@@ -23,7 +23,7 @@ import project.services.IPaymentService;
 
 @SpringBootTest
 public class PaymentServiceTest {
-	static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceTest.class);
+	static final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceTest.class);
 	@Autowired
 	private IPaymentService paymentService;
 	

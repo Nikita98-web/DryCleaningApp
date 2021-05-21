@@ -32,10 +32,13 @@ public class UserController {
 	
 	//Get sign out
 	@GetMapping("/getsignout")
-	public User signOut(@RequestBody User user) {
+	public ResponseEntity<Object> signOut(@RequestBody User user) {
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/User/getsignOut URL is opened");
 		LOGGER.info("SignOut method executed");
-		return userService.signOut(user);
+		User u = userService.signOut(user);
+		response=new ResponseEntity<Object>(u,HttpStatus.OK);
+		return response;
 	}
 	
 	//Update Password by id

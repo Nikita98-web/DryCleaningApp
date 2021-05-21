@@ -22,10 +22,13 @@ public class PaymentController {
 	
 	//Add Payment
 	@PostMapping("/add")
-	public Payment addPayment(@RequestBody Payment payment) {
+	public ResponseEntity<Object> addPayment(@RequestBody Payment payment) {
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/Payment/add URL is opened");
 		LOGGER.info("addPayment method executed");
-		return paymentService.addPayment(payment);
+		Payment p= paymentService.addPayment(payment);
+		response = new ResponseEntity<Object>(p,HttpStatus.CREATED);
+		return response;
 	}
 	
 	//Remove Payment by id
@@ -63,9 +66,12 @@ public class PaymentController {
 	
 	//Get all payment details
 	@GetMapping("/get")
-	public List<Payment> getAllPaymentDetails(){
+	public ResponseEntity<Object> getAllPaymentDetails(){
+		ResponseEntity<Object> response = null;
 		LOGGER.info("/Payment/get URL is opened");
 		LOGGER.info("Get method executed");
-		return paymentService.getAllPaymentDetails();
+		List<Payment> lp= paymentService.getAllPaymentDetails();
+		response=new ResponseEntity<Object>(lp,HttpStatus.OK);
+		return response;
 	}
 }
