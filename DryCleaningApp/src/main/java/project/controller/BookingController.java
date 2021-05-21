@@ -24,11 +24,12 @@ public class BookingController {
 	
 	//Add a booking
 	@PostMapping("/add")
-	public Booking addBooking(@RequestBody Booking booking) {
+	public ResponseEntity<Object> addBooking(@RequestBody Booking booking) {
 		LOGGER.info("/bookings/add URL is opened");
 		LOGGER.info("add Booking method executed");
-		return bookingService.addBooking(booking);
-		
+		Booking b=bookingService.addBooking(booking);
+		ResponseEntity<Object> response=new ResponseEntity<Object>(b,HttpStatus.CREATED);
+		return response;
 	}
 	//Remove all the booking by id
 	@DeleteMapping("/remove/{bookingId}")
@@ -64,19 +65,25 @@ public class BookingController {
 	}
 	//Get all the bookings
 	@GetMapping("/get")
-	public List<Booking> getAllBookings(){
+	public ResponseEntity<Object> getAllBookings(){
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/bookings/add URL is opened");
 		LOGGER.info("getAllBookings method executed");
-		return bookingService.getAllBookings();
+		List<Booking> lb= bookingService.getAllBookings();
+		response=new ResponseEntity<Object>(lb,HttpStatus.OK);
+		return response;
 	}
 	
 	//Get all the bookings for a specific date
 	@GetMapping("/getbydate/{date}")
-	public List<Booking> getBookingsByDate(@PathVariable String date){
+	public ResponseEntity<Object> getBookingsByDate(@PathVariable String date){
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/bookings/getbydate/"+date+ " URL is opened");
 		LOGGER.info("getbydate method executed");
 		LocalDate myDate=LocalDate.parse(date);
-		return bookingService.getBookingsByDate(myDate);
+		List<Booking> lb=bookingService.getBookingsByDate(myDate);
+		response=new ResponseEntity<Object>(lb,HttpStatus.OK);
+		return response;
 	}
 	
 	//Get bookings by customer id

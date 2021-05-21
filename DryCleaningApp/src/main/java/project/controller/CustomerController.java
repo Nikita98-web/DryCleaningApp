@@ -24,10 +24,13 @@ public class CustomerController {
 	
 	//Add Custommer
 	@PostMapping("/add")
-	Customer addCustomer(@RequestBody Customer customer) {
+	public ResponseEntity<Object> addCustomer(@RequestBody Customer customer) {
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/customer/add URL is opened");
 		LOGGER.info("addCustomer method executed");
-		return customerService.addCustomer(customer);
+		Customer c= customerService.addCustomer(customer);
+		response=new ResponseEntity<Object>(c,HttpStatus.CREATED);
+		return response;
 	}
 	
 	//Remove customer by customerId
@@ -66,10 +69,13 @@ public class CustomerController {
 	
 	//Get all customers
 	@GetMapping("/get")
-	public List<Customer> getAllCustomers(){
+	public ResponseEntity <Object> getAllCustomers(){
+		ResponseEntity <Object> response=null;
 		LOGGER.info("/customer/get URL is opened");
 		LOGGER.info("GetAll Customer method executed");
-		return customerService.getAllCustomers();
+		List<Customer> lc= customerService.getAllCustomers();
+		response=new ResponseEntity <Object>(lc,HttpStatus.OK);
+		return response;
 	}
 	
 }

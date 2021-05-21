@@ -23,10 +23,13 @@ public class OrderController {
 	
 	//Add Order
 	@PostMapping("/add")
-	public Order addOrder(@RequestBody Order order) {
+	public ResponseEntity<Object> addOrder(@RequestBody Order order) {
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/Order/add URL is opened");
 		LOGGER.info("addOrder method executed");
-		return orderService.addOrder(order);
+		Order o =orderService.addOrder(order);
+		response=new ResponseEntity<Object>(o,HttpStatus.CREATED);
+		return response;
 	}
 	
 	@DeleteMapping("/remove/{id}")
@@ -63,9 +66,12 @@ public class OrderController {
 	
 	//Get all orders
 	@GetMapping("/get")
-	public List<Order> getAllOrders(){
+	public ResponseEntity<Object> getAllOrders(){
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/Order/get URL is opened");
 		LOGGER.info("Get method executed");
-		return orderService.getAllOrders();
+		List<Order> lo= orderService.getAllOrders();
+		response=new ResponseEntity<Object>(lo,HttpStatus.OK);
+		return response;
 	}
 }

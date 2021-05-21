@@ -21,10 +21,13 @@ public class CustomerItemController {
 	
 	//Add CustomerItem 
 	@PostMapping("/add")
-	public CustomerItem addItem(@RequestBody CustomerItem item) {
+	public ResponseEntity<Object> addItem(@RequestBody CustomerItem item) {
+		ResponseEntity<Object> response=null;
 		LOGGER.info("/customeritem/add URL is opened");
 		LOGGER.info("add Customer method executed");
-		return customerItemService.addItem(item);
+		CustomerItem ci=customerItemService.addItem(item);
+		response= new ResponseEntity<Object>(ci,HttpStatus.CREATED);
+		return response;
 	}
 	
 	//Remove CustomerItem by id
