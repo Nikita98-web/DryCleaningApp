@@ -19,7 +19,7 @@ import java.time.LocalTime;
 
 @SpringBootTest
 public class UserServiceTest {
-	static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceTest.class);
+	static final Logger LOGGER = LoggerFactory.getLogger(UserServiceTest.class);
 	@Autowired
 	private IUserService userService;
 	
@@ -78,7 +78,7 @@ public class UserServiceTest {
 		LOGGER.info("changePasswordTest01 method executed");
 		user=new User("7","xyz");
 		try {
-		assertNotNull(userService.changePassword(639, user));
+		assertNotNull(userService.changePassword(7, user));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());
