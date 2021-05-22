@@ -27,7 +27,12 @@ public class UserControllerTest {
 	public void signInTest01() throws NotFoundException{
 		LOGGER.info("signInTest01 method executed");
 		user=new User("7","xyz");
+		try {
 		assertEquals(userController.signIn(user).getStatusCode(),HttpStatus.ACCEPTED);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("UserId or Password is not correct",ex.getMessage());
+		}
 	}
 	
 	@Test
@@ -41,7 +46,12 @@ public class UserControllerTest {
 	public void changePasswordTest01() throws NotFoundException{
 		LOGGER.info("signOutTest01 method executed");
 		user=new User("7","xyz");
+		try {
 		assertEquals(userController.changePassword(7, user).getStatusCode(),HttpStatus.ACCEPTED);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("User Id is not valid",ex.getMessage());
+		}
 		
 	}
 }

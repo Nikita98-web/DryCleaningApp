@@ -38,7 +38,7 @@ public class BookingServiceTest {
 	public  void init() {
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		booking=new Booking(35,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
+		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
 	}
 	
 	@Test
@@ -64,7 +64,7 @@ public class BookingServiceTest {
 	public void updateBookingTest02() throws NotFoundException{
 		LOGGER.info("updateBookingTest02 method executed");
 		try {
-		assertNotNull(bookingService.updateBooking(35, booking));
+		assertNotNull(bookingService.updateBooking(1, booking));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Booking Id is not valid",ex.getMessage());
@@ -86,7 +86,7 @@ public class BookingServiceTest {
 	public void getBookingTest02() throws Exception{
 		LOGGER.info("getBookingTest02 method executed");
 			try {
-			assertNotNull(bookingService.getBooking(35));
+			assertNotNull(bookingService.getBooking(1));
 			}
 			catch(NotFoundException ex) {
 				assertEquals("Booking id is not valid",ex.getMessage());
