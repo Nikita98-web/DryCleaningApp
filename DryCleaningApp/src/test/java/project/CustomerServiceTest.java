@@ -98,7 +98,7 @@ public class CustomerServiceTest {
 	public void getCustomerTest02() throws Exception{
 		LOGGER.info("getCustomerTest02 method executed");
 		try {
-		assertNotNull(customerService.getCustomer(1));
+		assertNotNull(customerService.getCustomer(7));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Customer id is not present",ex.getMessage());

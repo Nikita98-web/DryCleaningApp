@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
 import project.controller.PaymentController;
+import project.exception.NotFoundException;
 import project.models.Card;
 import project.models.Payment;
 import project.services.IPaymentService;
@@ -39,13 +40,23 @@ public class PaymentControllerTest {
 		LOGGER.info("updatePaymentTest01 method executed");
 		card=new Card(2,"MasterCard","1234567889567",LocalDate.parse("2026-09-06"),"SBI");
 		payment=new Payment(4,"Online","Completed",card);
-		assertEquals (paymentController.updatePayment(8, payment).getStatusCode(),HttpStatus.OK);
+		try {
+		assertEquals (paymentController.updatePayment(4, payment).getStatusCode(),HttpStatus.OK);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("Payment id is not valid",ex.getMessage());
+		}
 	}
 	
 	@Test
 	public void getPaymentTest01() throws Exception {
 		LOGGER.info("getPaymentTest01 method executed");
-		assertEquals (paymentController.getPaymentDetails(8).getStatusCode(),HttpStatus.OK);
+		try {
+		assertEquals (paymentController.getPaymentDetails(4).getStatusCode(),HttpStatus.OK);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("Payment id is not valid",ex.getMessage());
+		}
 	}
 	
 	@Test

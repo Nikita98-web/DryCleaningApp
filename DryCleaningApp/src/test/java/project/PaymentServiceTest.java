@@ -65,9 +65,9 @@ public class PaymentServiceTest {
 	public void updatePaymentTest01() throws Exception{
 		LOGGER.info("updatePaymentTest01 method executed");
 		card=new Card(2,"MasterCard","1234567889567",LocalDate.parse("2026-09-06"),"SBI");
-		payment=new Payment(8,"Online","Completed",card);
+		payment=new Payment(4,"Online","Completed",card);
 		try {
-		assertNotNull(paymentService.updatePayment(8, payment));
+		assertNotNull(paymentService.updatePayment(4, payment));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Payment id is not valid",ex.getMessage());
@@ -101,7 +101,7 @@ public class PaymentServiceTest {
 	public void getPaymentTest02() throws Exception{
 		LOGGER.info("getPaymentTest02 method executed");
 		try {
-			assertNotNull(paymentService.getPaymentDetails(8));
+			assertNotNull(paymentService.getPaymentDetails(4));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Payment id is not valid",ex.getMessage());
