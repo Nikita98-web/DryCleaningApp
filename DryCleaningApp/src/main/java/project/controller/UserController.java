@@ -20,7 +20,7 @@ public class UserController {
 	private IUserService userService;
 	
 	//Get sign in
-	@GetMapping("/getsignin")
+	@PostMapping("/getsignin")
 	public ResponseEntity<Object> signIn(@RequestBody User user) throws NotFoundException {
 		LOGGER.info("/User/getsignin URL is opened");
 		LOGGER.info("SignIn method executed");
@@ -31,7 +31,7 @@ public class UserController {
 	}
 	
 	//Get sign out
-	@GetMapping("/getsignout")
+	@PostMapping("/getsignout")
 	public ResponseEntity<Object> signOut(@RequestBody User user) {
 		ResponseEntity<Object> response=null;
 		LOGGER.info("/User/getsignOut URL is opened");
