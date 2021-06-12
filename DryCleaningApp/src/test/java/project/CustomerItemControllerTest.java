@@ -69,7 +69,7 @@ public class CustomerItemControllerTest {
 	public void getItemsByCustomeerTest01() throws Exception{
 		LOGGER.info("updateItemTest01 method executed");
 		try {
-			assertEquals(customerItemController.getItemsByCustomer(7).getStatusCode(),HttpStatus.OK);
+			assertEquals(customerItemController.getItemsByCustomer("7").getStatusCode(),HttpStatus.OK);
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Customerid is not valid",ex.getMessage());

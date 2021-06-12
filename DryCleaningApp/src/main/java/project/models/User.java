@@ -2,6 +2,7 @@ package project.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="users")
 @Inheritance(strategy= InheritanceType.JOINED)

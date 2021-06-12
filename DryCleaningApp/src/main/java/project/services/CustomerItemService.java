@@ -42,7 +42,7 @@ public class CustomerItemService implements ICustomerItemService {
 	}
 	
 	//Get items by customer
-	public List<CustomerItem> getItemsByCustomer(long customerId)throws Exception{
+	public List<CustomerItem> getItemsByCustomer(String customerId)throws Exception{
 		LOGGER.info("customerItem service - getItemsByCustomer Customer method executed");
 		return customerItemRepository.getItemsByCustomer(customerId);
 	}

@@ -25,19 +25,19 @@ public class CustomService implements ICustomerService {
 	}
 	
 	//Remove customer by customerId
-	public Customer removeCustomer(long custId)throws NotFoundException{
+	public Customer removeCustomer(String custId)throws NotFoundException{
 		LOGGER.info("customer service - removeCustomer method executed");
 		return customerRepository.removeCustomer(custId);
 	}
 	
 	//Update customer by customerId
-	public Customer updateCustomer(long custId, Customer customer) throws NotFoundException {
+	public Customer updateCustomer(String custId, Customer customer) throws NotFoundException {
 		LOGGER.info("customer service - updateCustomer method executed");
 		return customerRepository.updateCustomer(custId, customer);
 	}
 	
 	//Get customer by customerId
-	public Customer getCustomer(long custId)throws Exception {
+	public Customer getCustomer(String custId)throws Exception {
 		LOGGER.info("customer service - getCustomer method executed");
 		return customerRepository.getCustomer(custId);
 	}

@@ -65,7 +65,7 @@ public class CustomerItemController {
 	
 	//Get by customerId
 	@GetMapping("/getbycustomer/{customerId}")
-	public ResponseEntity<Object> getItemsByCustomer(@PathVariable long customerId)throws Exception{
+	public ResponseEntity<Object> getItemsByCustomer(@PathVariable String customerId)throws Exception{
 		LOGGER.info("/customeritem/getbycustomer/{customerId URL is opened");
 		LOGGER.info("Get Customer method executed");
 		ResponseEntity<Object> response = null;
