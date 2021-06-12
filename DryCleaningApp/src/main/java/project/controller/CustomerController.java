@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import project.exception.NotFoundException;
 import project.models.Customer;
 import project.services.ICustomerService;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -35,7 +35,7 @@ public class CustomerController {
 	
 	//Remove customer by customerId
 	@DeleteMapping("/remove/{custId}")
-	public ResponseEntity<Object> removeCustomer(@PathVariable long custId) throws NotFoundException{
+	public ResponseEntity<Object> removeCustomer(@PathVariable String custId) throws NotFoundException{
 		LOGGER.info("/customer/remove/{custId} URL is opened");
 		LOGGER.info("Remove Customer method executed");
 		ResponseEntity <Object>response=null;
@@ -46,7 +46,7 @@ public class CustomerController {
 	
 	//Update Customer by CustomerId
 	@PutMapping("/update/{custId}")
-	public ResponseEntity <Object> updateCustomer(@PathVariable long custId,@RequestBody Customer customer)throws NotFoundException {
+	public ResponseEntity <Object> updateCustomer(@PathVariable String custId,@RequestBody Customer customer)throws NotFoundException {
 		LOGGER.info("/customer/update/{custId} URL is opened");
 		LOGGER.info("Update Customer method executed");
 		ResponseEntity <Object>response=null;
@@ -58,7 +58,7 @@ public class CustomerController {
 	
 	//Get customer by customerId
 	@GetMapping("/get/{custId}")
-	public ResponseEntity <Object> getCustomer(@PathVariable long custId)throws Exception {
+	public ResponseEntity <Object> getCustomer(@PathVariable String custId)throws Exception {
 		LOGGER.info("/customer/get/{custId} URL is opened");
 		LOGGER.info("Get Customer method executed");
 		ResponseEntity <Object>response=null;

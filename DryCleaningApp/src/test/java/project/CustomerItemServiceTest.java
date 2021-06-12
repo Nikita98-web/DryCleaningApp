@@ -78,7 +78,7 @@ public class CustomerItemServiceTest {
 		public void getBookingsByCustomerTest01() throws Exception {
 			LOGGER.info("getBookingsByCustomerTest01 method executed");
 			try {
-			      customerItemService.getItemsByCustomer(789);
+			      customerItemService.getItemsByCustomer("789");
 			}
 			catch(NotFoundException ex) {
 				assertEquals("Customerid is not valid",ex.getMessage());
@@ -88,7 +88,7 @@ public class CustomerItemServiceTest {
 		public void getBookingsByCustomerTest02() throws Exception{
 			LOGGER.info("getBookingsByCustomerTest02 method executed");
 			try {
-			assertThat (customerItemService.getItemsByCustomer(7),IsEmptyCollection.empty());
+			assertThat (customerItemService.getItemsByCustomer("7"),IsEmptyCollection.empty());
 			}
 			catch(NotFoundException ex) {
 				assertEquals("Customerid is not valid",ex.getMessage());

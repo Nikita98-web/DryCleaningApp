@@ -65,8 +65,8 @@ public class CustomerItemRepository implements ICustomerItemRepository{
 			
 	}
 	
-	public List<CustomerItem> getItemsByCustomer(long customerId) throws Exception{
-		Optional<Customer> oc=customerjpa.findById(Long.toString(customerId));
+	public List<CustomerItem> getItemsByCustomer(String customerId) throws Exception{
+		Optional<Customer> oc=customerjpa.findById(customerId);
 		if(oc.isPresent()) {
 			Customer c = oc.get();
 			List<CustomerItem> cItem = customeritemjpa.findByCustomer(c);

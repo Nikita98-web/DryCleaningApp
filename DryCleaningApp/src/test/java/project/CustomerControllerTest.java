@@ -48,7 +48,7 @@ public class CustomerControllerTest {
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("7","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
 		try {
-		assertEquals(customerController.updateCustomer(6, customer).getStatusCode(), HttpStatus.ACCEPTED);
+		assertEquals(customerController.updateCustomer("6", customer).getStatusCode(), HttpStatus.ACCEPTED);
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());
@@ -61,7 +61,7 @@ public class CustomerControllerTest {
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("7","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
 		try {
-		assertEquals(customerController.getCustomer(7).getStatusCode(), HttpStatus.ACCEPTED);
+		assertEquals(customerController.getCustomer("7").getStatusCode(), HttpStatus.ACCEPTED);
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Customer id is not present",ex.getMessage());
