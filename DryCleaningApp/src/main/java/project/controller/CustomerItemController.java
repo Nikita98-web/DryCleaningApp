@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import project.models.CustomerItem;
 import project.services.ICustomerItemService;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/customeritem")
 public class CustomerItemController {

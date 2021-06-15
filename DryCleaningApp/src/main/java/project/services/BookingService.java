@@ -56,7 +56,7 @@ public class BookingService implements IBookingService {
 	}
 	
 	//Get all bookings by customer
-	public List<Booking>getBookingsByCustomer(long customerId)throws Exception{
+	public List<Booking>getBookingsByCustomer(String customerId)throws Exception{
 		LOGGER.info("Booking service - getBookingsByCustomer method executed");
 		return bookingRepository.getBookingsByCustomer(customerId);
 	}

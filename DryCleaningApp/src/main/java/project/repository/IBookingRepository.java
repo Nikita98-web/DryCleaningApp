@@ -13,5 +13,5 @@ public interface IBookingRepository {
 	Booking getBooking(long bookingId)throws Exception;
 	List<Booking> getAllBookings();
 	List<Booking> getBookingsByDate(LocalDate date);
-	List<Booking> getBookingsByCustomer(long customerId)throws Exception;
+	List<Booking> getBookingsByCustomer(String customerId)throws Exception;
 }

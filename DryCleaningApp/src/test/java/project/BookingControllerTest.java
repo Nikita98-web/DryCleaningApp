@@ -90,7 +90,7 @@ public class BookingControllerTest {
 	@Test
 	public void getBookingsByCustomersTest01() throws Exception {
 		LOGGER.info("getAllBookingTest01 method executed");
-		ResponseEntity<Object> response= bookingController.getBookingsByCustomer(7);
+		ResponseEntity<Object> response= bookingController.getBookingsByCustomer("7");
 		assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
 		}
 }
