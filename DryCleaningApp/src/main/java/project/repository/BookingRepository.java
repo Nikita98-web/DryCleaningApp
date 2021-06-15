@@ -74,8 +74,8 @@ Optional<Booking> ob = bookingjpa.findById(bookingId);
 		return b;
 	}
 	
-	public List<Booking> getBookingsByCustomer(long customerId) throws Exception{
-		Optional<Customer> oc = customerjpa.findById(Long.toString(customerId));
+	public List<Booking> getBookingsByCustomer(String customerId) throws Exception{
+		Optional<Customer> oc = customerjpa.findById(customerId);
 		if(oc.isPresent()) {
 			Customer c = oc.get();
 			return bookingjpa.findByCustomerDetails(c);
