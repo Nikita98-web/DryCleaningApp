@@ -34,7 +34,12 @@ public class CustomerItemControllerTest {
 	@Test
 	public void getItemTest01() throws Exception{
 		LOGGER.info("getItemTest01 method executed");
-			assertEquals(customerItemController.getItem(1).getStatusCode(),HttpStatus.OK);		
+		try {
+			assertEquals(customerItemController.getItem(1).getStatusCode(),HttpStatus.OK);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("CustomerItem is not valid",ex.getMessage());
+		}
 	}
 	
 	@Test
@@ -42,7 +47,7 @@ public class CustomerItemControllerTest {
 		LOGGER.info("addItemTest01 method executed");
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		customerItem=new CustomerItem(1,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+		customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
 		assertEquals(customerItemController.addItem(customerItem).getStatusCode(),HttpStatus.CREATED);		
 	}
 	
@@ -51,13 +56,23 @@ public class CustomerItemControllerTest {
 		LOGGER.info("updateItemTest01 method executed");
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		customerItem=new CustomerItem(1,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
-		assertEquals(customerItemController.updateItem(6, customerItem).getStatusCode(),HttpStatus.ACCEPTED);		
+		customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+		try {
+		assertEquals(customerItemController.updateItem(7, customerItem).getStatusCode(),HttpStatus.ACCEPTED);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("CustomerItem is not valid",ex.getMessage());
+		}
 	}
 	
 	@Test
 	public void getItemsByCustomeerTest01() throws Exception{
 		LOGGER.info("updateItemTest01 method executed");
-			assertEquals(customerItemController.getItemsByCustomer(3).getStatusCode(),HttpStatus.OK);		
+		try {
+			assertEquals(customerItemController.getItemsByCustomer("7").getStatusCode(),HttpStatus.OK);
+		}
+		catch(NotFoundException ex) {
+			assertEquals("Customerid is not valid",ex.getMessage());
+		}
 	}
 }

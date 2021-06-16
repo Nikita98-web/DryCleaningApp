@@ -8,5 +8,5 @@ public interface ICustomerItemService {
 	CustomerItem removeItem(long id)throws Exception;
 	CustomerItem updateItem(long id, CustomerItem item)throws Exception;
 	CustomerItem getItem(long id)throws Exception;
-	List<CustomerItem> getItemsByCustomer(long customerId)throws Exception;
+	List<CustomerItem> getItemsByCustomer(String customerId)throws Exception;
 }

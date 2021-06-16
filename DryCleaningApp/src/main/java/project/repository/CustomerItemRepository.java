@@ -38,11 +38,11 @@ public class CustomerItemRepository implements ICustomerItemRepository{
 		Optional<CustomerItem> oc = customeritemjpa.findById(id);
 		if(oc.isPresent()) {
 			CustomerItem c= oc.get();
-			c.setItemId(item.getItemId());
+			//c.setItemId(item.getItemId());
 			c.setCategory(item.getCategory());
 			c.setColor(item.getColor());
-			c.setCustomer(item.getCustomer());
-			c.setDescription(item.getCategory());
+			//c.setCustomer(item.getCustomer());
+			c.setDescription(item.getDescription());
 			c.setMaterial(item.getMaterial());
 			c.setName(item.getName());
 			c.setQuantity(item.getQuantity());
@@ -65,8 +65,8 @@ public class CustomerItemRepository implements ICustomerItemRepository{
 			
 	}
 	
-	public List<CustomerItem> getItemsByCustomer(long customerId) throws Exception{
-		Optional<Customer> oc=customerjpa.findById(Long.toString(customerId));
+	public List<CustomerItem> getItemsByCustomer(String customerId) throws Exception{
+		Optional<Customer> oc=customerjpa.findById(customerId);
 		if(oc.isPresent()) {
 			Customer c = oc.get();
 			List<CustomerItem> cItem = customeritemjpa.findByCustomer(c);

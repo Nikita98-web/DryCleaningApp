@@ -4,14 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.*;
 
 import project.exception.*;
 import project.models.User;
 import project.services.IUserService;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -20,7 +19,7 @@ public class UserController {
 	private IUserService userService;
 	
 	//Get sign in
-	@GetMapping("/getsignin")
+	@PostMapping("/getsignin")
 	public ResponseEntity<Object> signIn(@RequestBody User user) throws NotFoundException {
 		LOGGER.info("/User/getsignin URL is opened");
 		LOGGER.info("SignIn method executed");
@@ -31,7 +30,7 @@ public class UserController {
 	}
 	
 	//Get sign out
-	@GetMapping("/getsignout")
+	@PostMapping("/getsignout")
 	public ResponseEntity<Object> signOut(@RequestBody User user) {
 		ResponseEntity<Object> response=null;
 		LOGGER.info("/User/getsignOut URL is opened");

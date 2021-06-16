@@ -6,8 +6,8 @@ import project.models.*;
 
 public interface ICustomerService {
 	Customer addCustomer(Customer customer);
-	Customer removeCustomer(long custId)throws NotFoundException;
-	Customer updateCustomer(long custId, Customer customer)throws NotFoundException;
-	Customer getCustomer(long custId)throws Exception;
+	Customer removeCustomer(String custId)throws NotFoundException;
+	Customer updateCustomer(String custId, Customer customer)throws NotFoundException;
+	Customer getCustomer(String custId)throws Exception;
 	List<Customer> getAllCustomers();
 }

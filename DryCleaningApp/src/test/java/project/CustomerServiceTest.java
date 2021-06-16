@@ -42,7 +42,7 @@ public class CustomerServiceTest {
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
 		try {
-			customerService.updateCustomer(234, customer);
+			customerService.updateCustomer("234", customer);
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());
@@ -54,7 +54,7 @@ public class CustomerServiceTest {
 		address=new Address("a-605","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Gaurav","gaurav@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
 		try {
-		assertNotNull(customerService.updateCustomer(6, customer));
+		assertNotNull(customerService.updateCustomer("6", customer));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());
@@ -65,7 +65,7 @@ public class CustomerServiceTest {
 	public void removeCustomerTest01() throws NotFoundException{
 		LOGGER.info("removeCustomerTest01 method executed");
 		try {
-			customerService.removeCustomer(456);
+			customerService.removeCustomer("456");
 		}
 		catch(NotFoundException ex) {
 		assertEquals("Customer id not found",ex.getMessage());
@@ -76,7 +76,7 @@ public class CustomerServiceTest {
 	public void removeCustomerTest02() throws NotFoundException{
 		LOGGER.info("removeCustomerTest02 method executed");
 		try {
-			customerService.removeCustomer(500);
+			customerService.removeCustomer("500");
 		}
 		catch(NotFoundException ex) {
 		assertEquals("Customer id not found",ex.getMessage());
@@ -88,7 +88,7 @@ public class CustomerServiceTest {
 	public void getCustomerTest01() throws Exception{
 		LOGGER.info("getCustomerTest01 method executed");
 		try {
-			customerService.getCustomer(345);
+			customerService.getCustomer("345");
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Customer id is not present",ex.getMessage());
@@ -98,7 +98,7 @@ public class CustomerServiceTest {
 	public void getCustomerTest02() throws Exception{
 		LOGGER.info("getCustomerTest02 method executed");
 		try {
-		assertNotNull(customerService.getCustomer(1));
+		assertNotNull(customerService.getCustomer("7"));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("Customer id is not present",ex.getMessage());

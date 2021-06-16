@@ -2,11 +2,10 @@ package project.controller;
 
 import java.time.LocalDate;
 import java.util.List;
-
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import project.exception.NotFoundException;
 import project.models.Booking;
@@ -14,6 +13,7 @@ import project.services.IBookingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/bookings")
 public class BookingController {
@@ -87,8 +87,9 @@ public class BookingController {
 	}
 	
 	//Get bookings by customer id
+	
 	@GetMapping("/getbycustomer/{customerId}")
-	public ResponseEntity<Object> getBookingsByCustomer(@PathVariable long customerId) throws Exception{
+	public ResponseEntity<Object> getBookingsByCustomer(@PathVariable String customerId) throws Exception{
 		LOGGER.info("/bookings/getbycustomer/{customerId} URL is opened");
 		LOGGER.info("getbycustomer method executed");
 		ResponseEntity<Object>response=null;

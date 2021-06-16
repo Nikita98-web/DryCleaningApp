@@ -38,7 +38,7 @@ public class BookingControllerTest {
 	public  void init() {
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		booking=new Booking(35,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
+		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
 	}
 	
 	@Test
@@ -46,20 +46,31 @@ public class BookingControllerTest {
 		LOGGER.info("addBookingTest01 method executed");
 		ResponseEntity<Object> response= bookingController.addBooking(booking);
 		assertEquals(HttpStatus.CREATED, response.getStatusCode());
+		
 	}
 	
 	@Test
 	public void updateBookingTest01() throws NotFoundException {
 		LOGGER.info("updateBookingTest01 method executed");
-		ResponseEntity<Object> response= bookingController.updateBooking(35, booking);
-		assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
+		try {
+			ResponseEntity<Object> response= bookingController.updateBooking(1, booking);
+			assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
+		}
+		catch(NotFoundException ex) {
+			assertEquals("Booking Id is not valid",ex.getMessage());
+		}
 	}
 	
 	@Test
 	public void getBookingTest01() throws Exception {
 		LOGGER.info("getBookingTest01 method executed");
-		ResponseEntity<Object> response= bookingController.getBooking(35);
+		try {
+		ResponseEntity<Object> response= bookingController.getBooking(1);
 		assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
+		}
+		catch(NotFoundException ex) {
+			assertEquals("Booking id is not valid",ex.getMessage());
+		}
 	}
 	
 	@Test
@@ -79,7 +90,7 @@ public class BookingControllerTest {
 	@Test
 	public void getBookingsByCustomersTest01() throws Exception {
 		LOGGER.info("getAllBookingTest01 method executed");
-		ResponseEntity<Object> response= bookingController.getBookingsByCustomer(7);
+		ResponseEntity<Object> response= bookingController.getBookingsByCustomer("7");
 		assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
 		}
 }

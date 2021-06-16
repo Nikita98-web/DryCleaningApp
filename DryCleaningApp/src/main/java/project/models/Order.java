@@ -17,13 +17,13 @@ public class Order {
 	@Column(name="billing_date")
 	private LocalDate billingDate;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="user_id")
-	private Customer customer;
+	//@ManyToOne(cascade = CascadeType.PERSIST)
+	//@JoinColumn(name="user_id")
+	//private Customer customer;
 	
 	@Column(name="payment_method")
 	private String paymentMethod;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="booking_id")
 	private Booking bookingDetails;
 	
@@ -37,7 +37,7 @@ public class Order {
 		this.orderId = orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-		this.customer = customer;
+		//this.customer = customer;
 		this.paymentMethod = paymentMethod;
 		this.bookingDetails = bookingDetails;
 	}
@@ -59,12 +59,12 @@ public class Order {
 	public void setBillingDate(LocalDate billingDate) {
 		this.billingDate = billingDate;
 	}
-	public Customer getCustomer() {
+	/*public Customer getCustomer() {
 		return customer;
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}
+	}*/
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}

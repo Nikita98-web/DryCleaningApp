@@ -67,7 +67,7 @@ public class CustomerItemServiceTest {
 		public void getItemTest02() throws Exception{
 			LOGGER.info("getItemTest02 method executed");
 			try {
-			assertNotNull(customerItemService.getItem(1));
+			assertNotNull(customerItemService.getItem(7));
 			}
 			catch(NotFoundException ex) {
 				assertEquals("CustomerItem is not valid",ex.getMessage());
@@ -78,7 +78,7 @@ public class CustomerItemServiceTest {
 		public void getBookingsByCustomerTest01() throws Exception {
 			LOGGER.info("getBookingsByCustomerTest01 method executed");
 			try {
-			      customerItemService.getItemsByCustomer(789);
+			      customerItemService.getItemsByCustomer("789");
 			}
 			catch(NotFoundException ex) {
 				assertEquals("Customerid is not valid",ex.getMessage());
@@ -88,7 +88,7 @@ public class CustomerItemServiceTest {
 		public void getBookingsByCustomerTest02() throws Exception{
 			LOGGER.info("getBookingsByCustomerTest02 method executed");
 			try {
-			assertThat(customerItemService.getItemsByCustomer(3),IsEmptyCollection.empty());
+			assertThat (customerItemService.getItemsByCustomer("7"),IsEmptyCollection.empty());
 			}
 			catch(NotFoundException ex) {
 				assertEquals("Customerid is not valid",ex.getMessage());
@@ -100,7 +100,7 @@ public class CustomerItemServiceTest {
 			LOGGER.info("updateCustomerItemTest01 method executed");
 			address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 			customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-			customerItem=new CustomerItem(1,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+			customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
 			try {
 				customerItemService.updateItem(658, customerItem);
 			}
@@ -114,9 +114,9 @@ public class CustomerItemServiceTest {
 			LOGGER.info("updateCustomerItemTest02 method executed");
 			address=new Address("d-210","Balewadi","Baner","Pune","Maharashtra",12345);
 			customer=new Customer("7","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-			customerItem=new CustomerItem(6,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+			customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
 			try {
-			assertNotNull(customerItemService.updateItem(6, customerItem));
+			assertNotNull(customerItemService.updateItem(7, customerItem));
 			}
 			catch(NotFoundException ex) {
 				assertEquals("CustomerItem is not valid",ex.getMessage());
@@ -128,7 +128,7 @@ public class CustomerItemServiceTest {
 			LOGGER.info("addItemTest01 method executed");
 			address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 			customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-			customerItem=new CustomerItem(1,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+			customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
 			assertNotNull (customerItemService.addItem(customerItem));
 		}
 		

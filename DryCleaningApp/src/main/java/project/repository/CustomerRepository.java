@@ -20,8 +20,8 @@ public class CustomerRepository  implements ICustomerRepository{
 		return customer;
 	}
 	
-	public Customer removeCustomer(long custId) throws NotFoundException {
-		Optional<Customer> oc = customerjpa.findById(Long.toString(custId));
+	public Customer removeCustomer(String custId) throws NotFoundException {
+		Optional<Customer> oc = customerjpa.findById(custId);
 		if(oc.isPresent()) {
 			Customer c = oc.get();
 			customerjpa.delete(c);
@@ -32,8 +32,8 @@ public class CustomerRepository  implements ICustomerRepository{
 			
 	}
 	
-	public Customer updateCustomer(long custId, Customer customer) throws NotFoundException {
-		Optional<Customer> oc = customerjpa.findById(Long.toString(custId));
+	public Customer updateCustomer(String custId, Customer customer) throws NotFoundException {
+		Optional<Customer> oc = customerjpa.findById(custId);
 		
 		if(oc.isPresent()) {
 			
@@ -52,8 +52,8 @@ public class CustomerRepository  implements ICustomerRepository{
 		
 	}
 	
-	public Customer getCustomer(long custId) throws Exception {
-		Optional<Customer> oc = customerjpa.findById(Long.toString(custId));
+	public Customer getCustomer(String custId) throws Exception {
+		Optional<Customer> oc = customerjpa.findById(custId);
 		if(oc.isPresent()) {
 			Customer c=oc.get();
 			return c;
