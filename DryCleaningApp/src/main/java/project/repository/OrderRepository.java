@@ -35,11 +35,11 @@ public class OrderRepository implements IOrderRepository{
 		Optional<Order> oo=orderjpa.findById(id);
 		if(oo.isPresent()) {
 			Order o=oo.get();
-			o.setOrderId(order.getOrderId());
+			//o.setOrderId(order.getOrderId());
 			o.setAmount(order.getAmount());
 			o.setBillingDate(order.getBillingDate());
-			o.setBookingDetails(order.getBookingDetails());
-			o.setCustomer(order.getCustomer());
+			//o.setBookingDetails(order.getBookingDetails());
+			//o.setCustomer(order.getCustomer());
 			o.setPaymentMethod(order.getPaymentMethod());
 			orderjpa.save(o);
 			return o;
