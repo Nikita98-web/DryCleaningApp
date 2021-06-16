@@ -20,7 +20,7 @@ public class Booking {
 	@Column(name="service_type")
 	private String serviceType;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="user_id")
 	private Customer customerDetails;
 	

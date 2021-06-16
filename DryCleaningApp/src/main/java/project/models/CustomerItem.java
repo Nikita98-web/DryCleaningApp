@@ -28,7 +28,7 @@ public class CustomerItem {
 	@Column(name="description")
 	private String description;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="user_id")
 	private Customer customer;
 	

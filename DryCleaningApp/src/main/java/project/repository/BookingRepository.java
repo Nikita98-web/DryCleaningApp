@@ -41,10 +41,10 @@ Optional<Booking> ob = bookingjpa.findById(bookingId);
 		if(ob.isPresent()) {
 			
 		Booking b= ob.get();
-		b.setBookingId(booking.getBookingId());
+		//b.setBookingId(booking.getBookingId());
 		b.setBookingDate(booking.getBookingDate());
 		b.setBookingTime(booking.getBookingTime());
-		b.setCustomerDetails(booking.getCustomerDetails());
+		//b.setCustomerDetails(booking.getCustomerDetails());
 		b.setServiceType(booking.getServiceType());
 		bookingjpa.save(b);
 		return b;
