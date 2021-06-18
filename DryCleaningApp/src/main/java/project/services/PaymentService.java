@@ -44,4 +44,9 @@ public class PaymentService implements IPaymentService{
 		LOGGER.info("Payment service - getAllPaymentDetails Payment method executed");
 		return paymentRepository.getAllPaymentDetails();
 	}
+	//Get payment details by customerId
+		public List<Payment> getCustomerPaymentDetails(String custId) throws Exception{
+			LOGGER.info("Payment service - getPaymentDetails Payment method executed");
+			return paymentRepository.getCustomerPaymentDetails(custId);
+		}
 }

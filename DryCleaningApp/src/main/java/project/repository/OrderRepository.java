@@ -63,4 +63,8 @@ public class OrderRepository implements IOrderRepository{
 		List<Order> o = orderjpa.findAll();
 		return o;
 	}
+	public List<Order> getOrderByCustomer(String custId){
+		List<Order> o = orderjpa.findbyCustomer(custId);
+		return o;
+	}
 }

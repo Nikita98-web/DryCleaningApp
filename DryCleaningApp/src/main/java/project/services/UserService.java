@@ -26,7 +26,7 @@ public class UserService implements IUserService{
 	}
 	
 	//Change password for user
-	public User changePassword(long id, User user) throws NotFoundException{
+	public User changePassword(String id, User user) throws NotFoundException{
 		LOGGER.info("User service - ChangePassword method executed");
 		return userRepository.changePassword(id, user);
 	}

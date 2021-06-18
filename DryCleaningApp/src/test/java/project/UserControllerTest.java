@@ -47,7 +47,7 @@ public class UserControllerTest {
 		LOGGER.info("signOutTest01 method executed");
 		user=new User("7","xyz");
 		try {
-		assertEquals(userController.changePassword(7, user).getStatusCode(),HttpStatus.ACCEPTED);
+		assertEquals(userController.changePassword("7", user).getStatusCode(),HttpStatus.ACCEPTED);
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());

@@ -16,6 +16,7 @@ import project.exception.NotFoundException;
 import project.models.Address;
 import project.models.Booking;
 import project.models.Customer;
+import project.models.CustomerItem;
 import project.models.Order;
 import project.services.IBookingService;
 import project.services.IOrderService;
@@ -32,13 +33,15 @@ public class OrderServiceTest {
 	Customer customer=null;
 	Booking booking=null;
 	Order order=null;
+	CustomerItem customerItem=null;
 	
 	@Test
 	public void addOrderTest01() {
 		LOGGER.info("addOrderTest01 method executed");
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
+		customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customerItem);
 		order=new Order(2,5000.00,LocalDate.parse("2021-05-03"),customer,"Online",booking);
 		assertNotNull (orderService.addOrder(order));
 	}
@@ -70,7 +73,8 @@ public class OrderServiceTest {
 		LOGGER.info("updateOrderTest01 method executed");
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
+		customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customerItem);
 		order=new Order(1,5000.00,LocalDate.parse("2021-05-03"),customer,"Online",booking);
 		try {
 			orderService.updateOrder(457, order);
@@ -85,7 +89,8 @@ public class OrderServiceTest {
 		LOGGER.info("updateOrderTest02 method executed");
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		booking=new Booking(15,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
+		customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+		booking=new Booking(15,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customerItem);
 		order=new Order(2,5000.00,LocalDate.parse("2021-05-03"),customer,"Online",booking);
 		try {
 		assertNotNull(orderService.updateOrder(2, order));

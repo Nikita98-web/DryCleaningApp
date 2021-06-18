@@ -67,7 +67,7 @@ public class UserServiceTest {
 		LOGGER.info("changePasswordtTest01 method executed");
 		user=new User("386","jsdeus");
 		try {
-			userService.changePassword(639, user);
+			userService.changePassword("639", user);
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());
@@ -78,7 +78,7 @@ public class UserServiceTest {
 		LOGGER.info("changePasswordTest01 method executed");
 		user=new User("7","xyz");
 		try {
-		assertNotNull(userService.changePassword(7, user));
+		assertNotNull(userService.changePassword("7", user));
 		}
 		catch(NotFoundException ex) {
 			assertEquals("User Id is not valid",ex.getMessage());

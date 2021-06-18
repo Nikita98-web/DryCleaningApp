@@ -38,6 +38,10 @@ public class OrderService implements IOrderService{
 		LOGGER.info("Order service - getOrder method executed");
 		return orderRepository.getOrderDetails(id);
 	}
+	public List<Order> getOrderByCustomer(String id)throws Exception {
+		LOGGER.info("Order service - getOrder method executed");
+		return orderRepository.getOrderByCustomer(id);
+	}
 	
 	//Get all orders
 	public List<Order> getAllOrders(){

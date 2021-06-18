@@ -9,4 +9,6 @@ public interface IPaymentService {
 	Payment updatePayment(long id, Payment payment)throws Exception;
 	Payment getPaymentDetails(long id)throws Exception;
 	List<Payment> getAllPaymentDetails();
+	List<Payment> getCustomerPaymentDetails(String custId) throws Exception;
+
 }

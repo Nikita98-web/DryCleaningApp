@@ -16,6 +16,10 @@ public class Payment {
 	@Column(name="status")
 	private String status;
 	
+	@Column(name="customer_id")
+	private String customerId;
+	
+	
 	@OneToOne (cascade = CascadeType.ALL, optional=true)
 	@JoinColumn(name="id")
 	private Card card;
@@ -31,6 +35,16 @@ public class Payment {
 		this.status = status;
 		this.card = card;
 	}
+	
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
 	public long getPaymentId() {
 		return paymentId;
 	}
