@@ -38,6 +38,11 @@ public class PaymentRepository implements IPaymentRepository {
 		else 
 			throw new NotFoundException("Payment id is not valid");
 	}
+	public List<Payment> getCustomerPaymentDetails(String custId) throws Exception{
+			List<Payment>  op = paymentjpa.findByCustomerId(custId);
+			return op; 
+	}
+		
 	
 	public List<Payment> getAllPaymentDetails(){
 		List<Payment> p = paymentjpa.findAll();

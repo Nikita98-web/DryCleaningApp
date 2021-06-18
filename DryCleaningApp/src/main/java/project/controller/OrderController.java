@@ -62,7 +62,15 @@ public class OrderController {
 		response = new ResponseEntity<Object>(o,HttpStatus.OK);
 		return response;
 	}
-	
+	@GetMapping("/getbycustomer/{custId}")
+	public ResponseEntity<Object> getOrderByCustomer(@PathVariable String custId) throws Exception{
+		LOGGER.info("/Order/getbyCustomer/{id}} URL is opened");
+		LOGGER.info("getbyCustomer method executed");
+		ResponseEntity<Object> response=null;
+		List<Order> lo =  orderService.getOrderByCustomer(custId);
+		response = new ResponseEntity<Object>(lo,HttpStatus.OK);
+		return response;
+	}
 	//Get all orders
 	@GetMapping("/get")
 	public ResponseEntity<Object> getAllOrders(){

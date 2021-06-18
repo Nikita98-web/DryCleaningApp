@@ -28,8 +28,8 @@ public class UserRepository implements IUserRepository{
 		return user;
 	}
 	
-	public User changePassword(long id, User user)  throws NotFoundException {
-		Optional<User> ou=userjpa.findById(Long.toString(id));
+	public User changePassword(String id, User user)  throws NotFoundException {
+		Optional<User> ou=userjpa.findById(id);
 		if(ou.isPresent()) {
 			User u=ou.get();
 			u.setPassword(user.getPassword());

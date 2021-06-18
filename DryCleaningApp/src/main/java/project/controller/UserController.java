@@ -42,7 +42,7 @@ public class UserController {
 	
 	//Update Password by id
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Object> changePassword(@PathVariable long id,@RequestBody User user) throws NotFoundException{
+	public ResponseEntity<Object> changePassword(@PathVariable String id,@RequestBody User user) throws NotFoundException{
 		LOGGER.info("/User/update/{id} URL is opened");
 		LOGGER.info("ChangePassword method executed");
 		ResponseEntity <Object>response=null;
