@@ -20,6 +20,7 @@ import project.exception.NotFoundException;
 import project.models.Address;
 import project.models.Booking;
 import project.models.Customer;
+import project.models.CustomerItem;
 import project.services.IBookingService;
 
 @SpringBootTest
@@ -33,12 +34,14 @@ public class BookingControllerTest {
 	Address address=null;
 	Customer customer=null;
 	Booking booking=null;
+	CustomerItem customerItem=null;
 	
 	@BeforeAll
 	public  void init() {
 		address=new Address("a-210","Balewadi","Baner","Pune","Maharashtra",12345);
 		customer=new Customer("6","xyz","Anand","anand@gmail.com","1234567",LocalDate.parse("1994-05-12"),address);
-		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customer);
+		customerItem=new CustomerItem(7,"SalwarSuit","Black","Dress",10,"Silk","Foradults",customer);
+		booking=new Booking(1,LocalDate.parse("2021-05-10"),LocalTime.parse("05:00:00"),"Online", customerItem);
 	}
 	
 	@Test

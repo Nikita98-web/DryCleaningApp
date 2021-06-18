@@ -73,4 +73,14 @@ public class PaymentController {
 		response=new ResponseEntity<Object>(lp,HttpStatus.OK);
 		return response;
 	}
+	
+	@GetMapping("/getbycustomer/{custId}")
+	public ResponseEntity<Object> getCustomerPaymentDetails(@PathVariable String custId)throws Exception{
+		ResponseEntity<Object> response = null;
+		LOGGER.info("/Payment/getbycustomer URL is opened");
+		LOGGER.info("Get method executed");
+		List<Payment> lp= paymentService.getCustomerPaymentDetails(custId);
+		response=new ResponseEntity<Object>(lp,HttpStatus.OK);
+		return response;
+	}
 }

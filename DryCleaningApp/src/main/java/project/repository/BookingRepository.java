@@ -41,10 +41,8 @@ Optional<Booking> ob = bookingjpa.findById(bookingId);
 		if(ob.isPresent()) {
 			
 		Booking b= ob.get();
-		//b.setBookingId(booking.getBookingId());
 		b.setBookingDate(booking.getBookingDate());
 		b.setBookingTime(booking.getBookingTime());
-		//b.setCustomerDetails(booking.getCustomerDetails());
 		b.setServiceType(booking.getServiceType());
 		bookingjpa.save(b);
 		return b;
@@ -77,8 +75,7 @@ Optional<Booking> ob = bookingjpa.findById(bookingId);
 	public List<Booking> getBookingsByCustomer(String customerId) throws Exception{
 		Optional<Customer> oc = customerjpa.findById(customerId);
 		if(oc.isPresent()) {
-			Customer c = oc.get();
-			return bookingjpa.findByCustomerDetails(c);
+			return bookingjpa.findByCustomerDetails(customerId);
 		}
 		else 
 			throw new NotFoundException("customer id is not valid");
